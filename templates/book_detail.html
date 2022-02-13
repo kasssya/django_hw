@@ -14,7 +14,7 @@
 <div>
     <h2>Reviews:</h2>
     <ul>
-        {% for i in object.book_coment.all %}
+        {% for i in books.book_coment.all %}
             <li>
             <p>{{ i.text }}</p>
             <p>{{ i.created_date }}</p>
