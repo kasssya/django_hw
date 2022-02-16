@@ -16,7 +16,7 @@ class Book(models.Model):
 
 
 class BookFeedback(models.Model):
-    books = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='book_coment')
+    books = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='book_comment')
     text = models.TextField()
     created_date = models.DateField(auto_now_add=True)
 

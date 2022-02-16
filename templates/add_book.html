@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add book</title>
+</head>
+<body>
+<style>
+    body{
+        text-align: center;
+        background: url("https://catherineasquithgallery.com/uploads/posts/2021-03/1614631546_20-p-fon-kirpichnaya-stena-dlya-fotoshopa-26.jpg");
+    }
+
+    h1{
+        color: #bebebf;
+    }
+
+    a{
+        color: #bebebf;
+    }
+</style>
+<a href="/book/">Главная</a>
+<h1>Add Book</h1>
+<form action="/add-book/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <input type="submit" value="Add"/>
+</form>
+</body>
+</html>

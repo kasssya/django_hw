@@ -7,14 +7,14 @@
 <body>
     <h2>{{ books.title }}</h2>
     <p>{{ books.description }}</p>
-    <img src="books.image.url" alt="">
+    <img src="{{books.image.url}}" alt="">
     <p>{{ books.created_date}}</p>
     <p>{{ books.update_date}}</p>
     <p>{{ books.author}}</p>
 <div>
     <h2>Reviews:</h2>
     <ul>
-        {% for i in books.book_coment.all %}
+        {% for i in books.book_comment.all %}
             <li>
             <p>{{ i.text }}</p>
             <p>{{ i.created_date }}</p>
