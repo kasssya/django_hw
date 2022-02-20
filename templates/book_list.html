@@ -1,66 +1,183 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Book</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/'%}"/>
-    <link rel="shortcut icon" href="https://office-guru.ru/wp-content/uploads/2021/08/1614256626_python_logo.jpg">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css/'%}">
+    <link rel="shortcut icon" href="https://w7.pngwing.com/pngs/831/479/png-transparent-white-book-logo-ibooks-computer-icons-ios-apple-app-store-sparito-lo-scaffale-sono-rimaste-le-pagine-aperte-i-colori-cambiano-angle-text-rectangle.png">
+    <title>BOOK</title>
 </head>
 <body>
-<style>
-    body{
-        background-color:darkviolet;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora&family=Poppins:wght@400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora&family=Oxygen&family=Poppins:wght@400;700;800&display=swap');
 
-    button{
-        background-color: #0dcaf0;
-    }
-    .button__ {
-        background-color: darkviolet;
-    }
-</style>
-<hr>
-<center>
-<button style="background-color: deeppink">
-    <a href="/add-book/" style="text-decoration: none; color: black"><h3><i>Add</i></h3></a>
-</button>
-    </center>
-<hr>
-<div class="container book__container">
-    <div class="row gy-2">
-    {% for i in book %}
-    <div class="card mb-3" style="max-width: 500px;">
-        <div class="col-md-4">
-          <img src="{{ i.image.url}}" class="img-fluid rounded-start" alt="...">
+        font-face {
+            font-family: 'Lora';
+        }
+
+        * {
+            font-family: 'Lora', sans-serif;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h3,{
+            font-family: 'Lora';
+            margin: 0;
+
+        }
+
+
+        ul,
+        ol,
+        p {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        p {
+            font-size: 'Oxygen';
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            border: none;
+        }
+
+
+
+        .container {
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        body {
+            background-color: darkslategrey;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .book_block h1 {
+            font-size: 50px;
+            color: rgb(255, 255, 255);
+            font-family: serif;
+            border-bottom: 2px solid #fff;
+        }
+
+        .block_book {
+            padding-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 40px;
+
+        }
+
+        .block_book img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .p {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .block1 {
+            background: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 20px 20px 7px rgba(3, 0, 0, 0.63);
+            margin-bottom: 20px;
+        }
+
+
+        .p a {
+            background: orange;
+            border-radius: 20px;
+            padding: 5px 10px;
+            color: white;
+        }
+
+        .p a:hover {
+            color: #000;
+            box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.63);
+            r;
+        }
+
+        .p p {
+            padding-top: 5px;
+
+        }
+
+        .img img {
+            width: 20%;
+
+        }
+
+        .shows__img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+
+        .block1 p {
+            margin-top: 30px;
+        }
+
+        .block1 a {
+            margin-top: 20px;
+        }
+
+
+
+    </style>
+
+    <div class="book_block">
+        <div class="container">
+            <h1 style="text-align: center; padding-top: 30px;">Books</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/add-book/" style="text-decoration: none; color: #ffc720"><h3><i>Добавить</i></h3></a>
+            </div>
+            <div class="block_book ">
+                {% for i in book %}
+                <div class="block1">
+                    <img src="{{ i.image.url}}" class="card-img-top shows__img" alt="">
+
+                    <div class="para">
+                        <h3 class="card-title">{{i.title}} </h3>
+                        <a style="padding-top: 6px; color: black;" href=""> {{i.author}}</a>
+                    </div>
+                    <div class="p">
+                        <a href="/book/{{i.id}}" class="btn btn-primary">Читать</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
         </div>
-         <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">{{i.title }}</h5>
-              <p class="card-text">{{i.description}}</p>
-            <label for="read-more-checker" class="read-more-button"></label>
-            <p class="card-text"><small class="text-muted">{{i.update_date}}</small></p>
-            <a href="/book/{{ i.id }}/" class="btn btn-primary button__">Read</a>
-          </div>
-         </div>
-      </div>
-
-    {% endfor %}
     </div>
-</div>
 
-<!--<div>-->
-<!--    <ul>-->
-<!--        {% for i in book %}-->
-<!--        <li>-->
-<!--            <h2><a href="/book/{{i.id}}/">{{i.title}}</a></h2>-->
-<!--            <p> {{i.author}}</p>-->
-<!--            <p>{{i.description}}</p>-->
-<!--            <img src="{{ i.image.url}}" alt="">-->
-<!--        </li>-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
-<!--</div>-->
+
 
 </body>
+
 </html>

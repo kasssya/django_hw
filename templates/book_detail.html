@@ -1,27 +1,60 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Detail</title>
+    <link rel="stylesheet" type ="text/css" href="%static 'css/bootstrap.css/' %">
 </head>
+
+<style>
+    body{
+        background-color: darkslategrey;
+    }
+
+    .container{
+        max-width: 900px;
+        margin-bottom: 30px;
+    }
+    .image{
+        height: 300px;
+        object-fit: cover;
+    }
+    .button__back {
+        margin-bottom: 10px;
+
+    }
+
+
+</style>
 <body>
-    <h2>{{ books.title }}</h2>
-    <p>{{ books.description }}</p>
-    <img src="{{books.image.url}}" alt="">
-    <p>{{ books.created_date}}</p>
-    <p>{{ books.update_date}}</p>
-    <p>{{ books.author}}</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/book/" style="text-decoration: none; color: #ffc720"><h3><i>Назад</i></h3></a>
+</div>
+<div class="container">
+    <h1 style="color: white">{{ books.title }}</h1>
+  <img src="{{ books.image.url }}" class="card-img-top image" alt="...">
+    <h></h>
+    <div class="card">
+        <big class="card-header" style="color: white">{{ books.author }}</big>
+
+      <div class="card-body">
+          <big><big class="card-text" style="color: white ;">{{ books.description }}</big></big>
+        <p class="card-text" style="color: white">Дата создания: {{ books.created_date}}</p>
+        <p class="card-text" style="color: white">Дата изменения: {{ books.update_date }}</p>
+      </div>
+    </div>
+</div>
 <div>
-    <h2>Reviews:</h2>
+    <h3 style="color: white">Reviews:</h3>
     <ul>
         {% for i in books.book_comment.all %}
             <li>
-            <p>{{ i.text }}</p>
-            <p>{{ i.created_date }}</p>
+            <p style="color: white">{{ i.text }}</p>
+            <p style="color: white">{{ i.created_date }}</p>
             </li>
 
         {% endfor %}
     </ul>
 </div>
-</body>
-</html>
+
