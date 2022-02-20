@@ -20,10 +20,7 @@
         height: 300px;
         object-fit: cover;
     }
-    .button__back {
-        margin-bottom: 10px;
 
-    }
 
 
 </style>
@@ -45,6 +42,7 @@
       </div>
     </div>
 </div>
+
 <div>
     <h3 style="color: white">Reviews:</h3>
     <ul>
@@ -57,4 +55,11 @@
         {% endfor %}
     </ul>
 </div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a href="/book/{{ books.id }}/update/" style="text-decoration: none; color: #ffc720"><h3>Изменить</h3></a>
+    <a href="/book/{{ books.id }}/delete/" style="text-decoration: none; color: #ffc720"><h3>Удалить</h3></a>
+</div>
+
+</body>
+</html>
 
