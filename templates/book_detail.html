@@ -29,16 +29,16 @@
                 <a href="/book/" style="text-decoration: none; color: #ffc720"><h3><i>Назад</i></h3></a>
 </div>
 <div class="container">
-    <h1 style="color: white">{{ books.title }}</h1>
-  <img src="{{ books.image.url }}" class="card-img-top image" alt="...">
+    <h1 style="color: white">{{ object.title }}</h1>
+  <img src="{{ object.image.url }}" class="card-img-top image" alt="...">
     <h></h>
     <div class="card">
-        <big class="card-header" style="color: white">{{ books.author }}</big>
+        <big class="card-header" style="color: white">{{ object.author }}</big>
 
       <div class="card-body">
-          <big><big class="card-text" style="color: white ;">{{ books.description }}</big></big>
-        <p class="card-text" style="color: white">Дата создания: {{ books.created_date}}</p>
-        <p class="card-text" style="color: white">Дата изменения: {{ books.update_date }}</p>
+          <big><big class="card-text" style="color: white ;">{{ object.description }}</big></big>
+        <p class="card-text" style="color: white">Дата создания: {{ object.created_date}}</p>
+        <p class="card-text" style="color: white">Дата изменения: {{ object.update_date }}</p>
       </div>
     </div>
 </div>
@@ -46,7 +46,7 @@
 <div>
     <h3 style="color: white">Reviews:</h3>
     <ul>
-        {% for i in books.book_comment.all %}
+        {% for i in object.book_comment.all %}
             <li>
             <p style="color: white">{{ i.text }}</p>
             <p style="color: white">{{ i.created_date }}</p>
@@ -56,8 +56,8 @@
     </ul>
 </div>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <a href="/book/{{ books.id }}/update/" style="text-decoration: none; color: #ffc720"><h3>Изменить</h3></a>
-    <a href="/book/{{ books.id }}/delete/" style="text-decoration: none; color: #ffc720"><h3>Удалить</h3></a>
+    <a href="/book/{{ object.id }}/update/" style="text-decoration: none; color: #ffc720"><h3>Изменить</h3></a>
+    <a href="/book/{{ object.id }}/delete/" style="text-decoration: none; color: #ffc720"><h3>Удалить</h3></a>
 </div>
 
 </body>
